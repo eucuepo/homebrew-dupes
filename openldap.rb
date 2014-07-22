@@ -13,6 +13,7 @@ class Openldap < Formula
               --sysconfdir=#{etc}
               --localstatedir=#{var}]
     args << "--enable-bdb=no" << "--enable-hdb=no" if build.without? "berkeley-db"
+    args << "--enable-sssvlv=yes" if build.with? "sssvlv"
 
     system "./configure", *args
     system "make install"
